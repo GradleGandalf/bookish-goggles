@@ -24,9 +24,7 @@ This proof of concept demonstrates a basic message pipeline using Spring Boot 3.
      -d '{"content":"hello"}' http://localhost:8080/api/messages
    ```
 
-4. Try the simple web UI at `http://localhost:8080/index.html`. Press **Start**
-   to send one request per second for 12 seconds and watch the counter and
-   elapsed time update live.
+4. Try the simple web UI at `http://localhost:8080/index.html`. Your browser will prompt for the same `user/password` credentials used for the API. Press **Start** to send one request per second for 12 seconds and watch the counter and elapsed time update live.
 
 5. Alternatively, run the `SingleRun.java` script which performs the same test
    from the command line:

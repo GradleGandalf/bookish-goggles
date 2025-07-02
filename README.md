@@ -1,6 +1,6 @@
 # RabbitMQ Spring Boot POC
 
-This proof of concept demonstrates a basic message pipeline using Spring Boot 3.5, RabbitMQ and PostgreSQL. It exposes a secure REST endpoint that publishes messages to RabbitMQ. A listener consumes messages and persists them to PostgreSQL.
+This proof of concept demonstrates a basic message pipeline using Kotlin, Spring Boot 3.5, RabbitMQ and PostgreSQL. It exposes a secure REST endpoint that publishes messages to RabbitMQ. A listener consumes messages and persists them to PostgreSQL.
 
 ## Prerequisites
 - Java 21
@@ -23,6 +23,7 @@ This proof of concept demonstrates a basic message pipeline using Spring Boot 3.
    curl -u user:password -H 'Content-Type: application/json' \
      -d '{"content":"hello"}' http://localhost:8080/api/messages
    ```
+
 
 4. Try the simple web UI at `http://localhost:8080/index.html`. Your browser will prompt for the same `user/password` credentials used for the API. Press **Start** to send one request per second for 12 seconds and watch the counter and elapsed time update live.
 

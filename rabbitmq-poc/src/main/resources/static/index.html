@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RabbitMQ POC</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 2em; }
+#log { border: 1px solid #ccc; padding: 1em; height: 200px; overflow-y: auto; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>RabbitMQ POC</h1>
+<button id="startBtn">Start</button>
+<p>Requests sent: <span id="count">0</span></p>
+<p>Elapsed: <span id="timer">0</span>s</p>
+<div id="log"></div>
+<script>
+const btn = document.getElementById('startBtn');
+const countSpan = document.getElementById('count');
+const timerSpan = document.getElementById('timer');
+const logDiv = document.getElementById('log');
+
+btn.addEventListener('click', () => {
+  let count = 0;
+  let seconds = 0;
+  countSpan.textContent = '0';
+  timerSpan.textContent = '0';
+  logDiv.textContent = '';
+  const auth = btoa('user:password');
+  const sendInterval = setInterval(() => {
+    fetch('/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      },
+      body: JSON.stringify({content: 'hello ' + count})
+    }).then(() => {
+      count++;
+      countSpan.textContent = String(count);
+      logDiv.textContent += `Sent request ${count}\n`;
+    }).catch(err => {
+      logDiv.textContent += `Error: ${err}\n`;
+    });
+  }, 1000);
+
+  const timer = setInterval(() => {
+    seconds++;
+    timerSpan.textContent = String(seconds);
+    if (seconds >= 12) {
+      clearInterval(sendInterval);
+      clearInterval(timer);
+    }
+  }, 1000);
+});
+</script>
+</body>
+</html>

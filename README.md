@@ -11,11 +11,11 @@ This proof of concept demonstrates a basic message pipeline using Spring Boot 3.
 
 1. Start the infrastructure:
    ```bash
+   cd rabbitmq-poc
    docker-compose up -d
    ```
-2. Build and run the application:
+2. Build and run the application from the same directory:
    ```bash
-   cd rabbitmq-poc
    ./mvnw spring-boot:run
    ```
 3. Send a test request:

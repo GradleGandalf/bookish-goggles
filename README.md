@@ -50,4 +50,7 @@ Basic authentication is enabled with a default user (`user`/`password`). Update 
 - `docker-compose.yml` – RabbitMQ and PostgreSQL services
 - `loadtest.sh` – helper script for a simple benchmark
 
+## Windows notes
+- Ensure Docker Desktop is installed and running (with WSL 2 if enabled) before executing `docker-compose`.
+
 This setup is intended for experimentation and should be tuned and hardened before any production use.

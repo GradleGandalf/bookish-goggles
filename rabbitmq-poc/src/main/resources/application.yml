@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: rabbitmq-poc
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pocdb
+    username: pocuser
+    password: pocpass
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 50
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+app:
+  queue:
+    name: poc.queue
+  exchange:
+    name: poc.exchange
+  routing-key: poc.key
+
+logging.level.org.springframework.amqp: INFO
+logging.level.com.example.demo: INFO
+
+server:
+  port: 8080
